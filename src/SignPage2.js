@@ -14,7 +14,7 @@ const SignDiv = styled.div`
 `;
 
 const SignBorder = styled.div`
-  width: 1200px;
+  width: 800px;
   height: 900px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
@@ -30,11 +30,11 @@ const PagingDiv = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 54px;
-  margin-bottom: 35px;
+  margin-bottom: 100px;
 
   @media all and (max-width: 425px) {
     margin-top: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
   }
 `;
 
@@ -43,7 +43,6 @@ const Oval = styled.div`
   height: 9px;
   border-radius: 5px;
   background: #0095c8;
-  margin: 0 14px;
 
   @media all and (max-width: 425px) {
     width: 28px;
@@ -55,6 +54,8 @@ const Circle = styled.div`
   height: 9px;
   border-radius: 50%;
   background: #0095c8;
+  margin-left: 14px;
+  margin-right: 14px;
   @media all and (max-width: 425px) {
     width: 7px;
     height: 6px;
@@ -74,13 +75,181 @@ const Subtitle = styled.p`
 const Step = styled(Subtitle.withComponent("p"))`
   font-size: 64px;
   font-weight: bold;
-  margin-bottom: 40px;
 
-  @media all and (max-width: 450px) {
+  @media all and (max-width: 425px) {
     font-size: 38px;
-    margin-bottom: 24px;
   }
 `;
+
+const P = styled.p `
+  font-size: 14px;
+  margin-bottom: 36px;
+
+  @media all and (max-width: 425px) {
+    font-size: 14px;
+  }
+`
+
+const InputDiv = styled.div`
+  width: 450px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+  @media all and (max-width: 425px) {
+    width: 270px;
+  }
+`;
+
+const NameInput = styled.input.attrs({ type: "text" })`
+  width: 418px;
+  height: 21px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #c2c2c2;
+  &:focus,
+  :hover {
+    outline: none;
+    border-color: #0095c8;
+  }
+
+  @media all and (max-width: 425px) {
+    width: 248px;
+    height: 8px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+`;
+
+const IdInput = styled.input.attrs({ type: "text" })`
+  width: 278px;
+  height: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #c2c2c2;
+  margin-top: 15px;
+
+  &:focus,
+  :hover {
+    outline: none;
+    border-color: #0095c8;
+  }
+
+  @media all and (max-width: 425px) {
+    width: 248px;
+    height: 8px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+`
+
+const SubmitBtn = styled.button `
+  width: 132px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: #C2C2C2;
+  float: right;
+  color: #fff;
+  margin-top: 15px;
+  font-size: 14px;
+  margin-left: 8px;
+  cursor: pointer;
+
+  @media all and (max-width: 425px) {
+    width: 110px;
+    height: 18px;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 0;
+    background: none;
+    color: #000;
+    float: left;
+  }
+`
+
+const PwdInput = styled.input.attrs({ type: "password" }) `
+  width: 418px;
+  height: 21px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #C2C2C2;
+  margin-top: 15px;
+  &:focus,
+  :hover {
+    outline: none;
+    border-color: #0095c8;
+  }
+
+  @media all and (max-width: 425px) {
+    width: 248px;
+    height: 8px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+`
+
+const EmailInput = styled.input.attrs({ type: "text" })`
+  width: 133px;
+  height: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #c2c2c2;
+  margin-top: 15px;
+
+  &:focus,
+  :hover {
+    outline: none;
+    border-color: #0095c8;
+  }
+
+  @media all and (max-width: 425px) {
+    width: 152px;
+    height: 8px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    float: left;
+  }
+`
+
+const EmailDiv = styled.div `
+  width: 102px;
+  font-size: 14px;
+  display: inline-block;
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  user-select:none;
+  margin-left: 21.5px;
+  margin-right: 21.5px;
+
+  @media all and (max-width: 425px) {
+    width: 86px;
+    font-size: 12px;
+    margin: 0;
+    margin-top: 22px;
+  }
+`
+
+const PhoneCer = styled.button `
+  width: 450px;
+  height: 50px;
+  margin-top: 15px;
+  background-color: #c2c2c2;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+
+  @media all and (max-width: 425px) {
+    width: 270px;
+    height: 35px;
+  }
+`
 
 const NextBtn = styled.button`
   width: 450px;
@@ -90,77 +259,22 @@ const NextBtn = styled.button`
   color: #fff;
   border: none;
   font-size: 20px;
-  font-weight: bold;
   cursor: pointer;
   margin-bottom: 32px;
 
   @media all and (max-width: 425px) {
     width: 270px;
-    height: 40px;
+    height: 35px;
+    margin-top: 5px;
   }
 `;
 
-const AgreeDiv = styled.div`
-  margin-bottom: 24px;
-`;
-
-const TermsFont = styled.p`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
-  width: 87%;
-  margin: 0 auto;
-  @media all and (max-width: 425px) {
-    font-size: 18px;
-  }
-`;
-
-const Textarea = styled.textarea`
-  width: 85%;
-  height: 93px;
-  border-color: #0095c8;
-  margin-top: 20px;
-  resize: none;
-  scrollbar-color: #0095c8;
-  padding: 10px;
-  font-size: 12px;
-`;
-
-const Label = styled.label`
-  width: 87%;
-  display: flex;
-  margin: 0 auto;
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-
-  @media all and (max-width: 425px) {
-    font-size: 14px;
-  }
-`;
-
-const CheckAgree = styled.input.attrs({ type: "checkbox" })`
-  width: 18px;
-  height: 18px;
-`;
-
-const AllagreeLabel = styled(Label.withComponent("label"))`
-  font-size: 20px;
-
-  @media all and (max-width: 425px) {
-    font-size: 18px;
-  }
-`;
-
-const AllAgree = styled.input.attrs({ type: "checkbox" })`
-  width: 18px;
-  height: 18px;
-`;
-
-class SignPage2 extends Component {
+class SignPage3 extends Component {
   render() {
     const Paging = [];
-    for (var i = 0; i < 3; i++) {
+    var i = 0;
+
+    for (i; i < 2; i++) {
       if (i === 1) {
         Paging.push(<Oval key={i} />);
       } else {
@@ -168,81 +282,29 @@ class SignPage2 extends Component {
       }
     }
 
-    let check = false;
-    const chk = document.getElementsByName("checking");
-    const allCheckBtn = document.getElementsByName("allCheckBtn");
-
-    const CheckAll = () => {
-      if (!allCheckBtn.checked) {
-        allCheckBtn.checked = true;
-        for (var i = 0; i < chk.length; i++) {
-          chk[i].checked = true;
-        }
-      } else {
-        allCheckBtn.checked = false;
-        for (var i = 0; i < chk.length; i++) {
-          chk[i].checked = false;
-        }
-      }
-    };
-
-    const nextButton = () => {
-      const { history } = this.props;
-
-      for (var i = 0; i < chk.length; i++) {
-        if (chk[0].checked && chk[1].checked){
-          check = true;
-        } else {
-          check = false;
-        }
-      }
-
-      if (check) {
-        history.push("/signPage3");
-      } else {
-        alert("모든 약관에 동의해 주세요.");
-        return false;
-      }
-    };
-
     return (
       <SignDiv>
         <SignBorder>
           <PagingDiv>{Paging}</PagingDiv>
-          <Subtitle>약관에 동의해 주세요</Subtitle>
+          <Subtitle>회원가입을 진행해주세요.</Subtitle>
           <Step>STEP 02</Step>
-          <form>
-            <AgreeDiv>
-              <TermsFont>이용약관(필수)</TermsFont>
-              <Textarea readOnly row="4">
-                dddddddd
-              </Textarea>
-
-              <Label>
-                <CheckAgree name="checking" />
-                약관에 동의 합니다.
-              </Label>
-            </AgreeDiv>
-            <AgreeDiv>
-              <TermsFont>개인정보 처리 방침(필수)</TermsFont>
-              <Textarea readOnly row="4"></Textarea>
-              <Label>
-                <CheckAgree name="checking" />
-                약관에 동의 합니다.
-              </Label>
-            </AgreeDiv>
-            <AllagreeLabel>
-              <AllAgree onClick={CheckAll} />
-              모두 동의 합니다.
-            </AllagreeLabel>
-          </form>
-          <NextBtn name="allCheckBtn" onClick={nextButton}>
-            다음
-          </NextBtn>
+          <P>*는 필수 정보이므로 꼭 입력해주셔야 합니다.</P>
+          <InputDiv>
+            <NameInput placeholder="*성명" />
+            <IdInput placeholder="*아이디" />
+            <SubmitBtn>아이디 중복 체크</SubmitBtn>
+            <PwdInput placeholder="*비밀번호" />
+            <PwdInput placeholder="*비밀번호 확인" />
+            <EmailInput placeholder="*대림대학교 이메일" /> 
+            <EmailDiv>@email.daelim </EmailDiv>
+            <SubmitBtn>이메일 인증 요청</SubmitBtn>
+            <PhoneCer>인증 요청</PhoneCer>
+          </InputDiv>
+          <NextBtn>가입 완료</NextBtn>
         </SignBorder>
       </SignDiv>
     );
   }
 }
 
-export default SignPage2;
+export default SignPage3;

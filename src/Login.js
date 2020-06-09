@@ -5,55 +5,55 @@ import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
 
-    constructor(){
-        super();
-        this.state = {value: ''};
-    }
-     
-    render(){
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+  }
 
-        const loginClick = () => {
-            const userid = document.getElementById("userid");
-            const password = document.getElementById("password");
-            const {history} = this.props;
-        
-            if(!userid.value) {
-              alert("아이디를 입력해주세요.");
-              userid.focus();
-            } else if(!password.value) {
-              alert("비밀번호를 입력해주세요.");
-              password.focus();
-            } else {
-              history.push("/#");
-            }
-          }
-     
-        return (
-            
-            <Container>
-                <Div><Img src ="../일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt ="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
-                    <H4>대중장에 오신것을</H4>
-                    <H1>환영합니다!</H1>
-                    <H5>서비스의 원활한 이용을 위해 로그인을 진행해 주시기 바랍니다.</H5>
-                    <form>
-                        <Input type="text" placeholder="아이디" id="userid" /><br></br>
-                        <Input type="password" placeholder="비밀번호" id="password"/>
-                        <Loginbtn onClick={loginClick}>로그인</Loginbtn>
-                    </form>
-                   
-                        <Memberservice>
-                            <Link  to ="#"><Memberfind>아이디 찾기</Memberfind></Link>
-                            <B>|</B>
-                            <Link to ="#"><Passwordfind>비밀번호 찾기</Passwordfind></Link>
-                            <B>|</B>
-                            <Link to ="SignPage1"><Join>회원가입</Join></Link>
-                        </Memberservice>
-                    
-                </Div>
-            </Container>
-            
-        );
+  render() {
+
+    const loginClick = () => {
+      const userid = document.getElementById("userid");
+      const password = document.getElementById("password");
+      const { history } = this.props;
+
+      if (!userid.value) {
+        alert("아이디를 입력해주세요.");
+        userid.focus();
+      } else if (!password.value) {
+        alert("비밀번호를 입력해주세요.");
+        password.focus();
+      } else {
+        history.push("/#");
+      }
     }
+    return (
+
+      <Container>
+        <Div>
+          <Img src="./일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
+          <H4>대중장에 오신것을</H4>
+          <H1>환영합니다!</H1>
+          <H5>서비스의 원활한 이용을 위해 로그인을 진행해 주시기 바랍니다.</H5>
+          <form>
+            <Input type="text" placeholder="아이디" id="userid" /><br></br>
+            <Input type="password" placeholder="비밀번호" id="password" />
+            <Loginbtn onClick={loginClick}>로그인</Loginbtn>
+          </form>
+
+          <Memberservice>
+            <Link to="#"><Memberfind>아이디 찾기</Memberfind></Link>
+            <B>|</B>
+            <Link to="#"><Passwordfind>비밀번호 찾기</Passwordfind></Link>
+            <B>|</B>
+            <Link to="SignPage1"><Join>회원가입</Join></Link>
+          </Memberservice>
+
+        </Div>
+      </Container>
+
+    );
+  }
 }
 
 
@@ -63,7 +63,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
-  
+
     @media all and (min-width: 1024px) {
       min-height: 900px;
     }
@@ -82,7 +82,7 @@ const Div = styled.div`
         height: 100vh;
     }
 `
-const Img =styled.img`
+const Img = styled.img`
   @media all and (max-width: 500px) {
     width: 380px;
     height:250px;
@@ -146,6 +146,8 @@ const Loginbtn = styled.button`
         height: 50px;
         font-size : 14px;
       }  
+  outline: none;
+  cursor: pointer;
 `
 
 const Memberservice = styled.a`
@@ -163,7 +165,7 @@ const Memberfind = styled.a`
         color : #0095C8;
       }
 `
-const Passwordfind= styled.a`
+const Passwordfind = styled.a`
     color : lightgrey;
     &:hover {
         color : #0095C8;

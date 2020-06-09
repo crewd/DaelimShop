@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import search from "./icon/search-24px.svg";
 import menu from "./icon/notes-24px.svg";
+import { Link } from "react-router-dom";
 
 const TopDiv = styled.div`
   display: flex;
@@ -259,20 +260,44 @@ class Header extends Component {
     const menuOpen = this.state.menuOpen;
 
     const searchOpen = this.state.searchOpen;
+    const {history} = this.props;
 
+    let lgin = ""
+    let login
+    let log = this.props.login
+    if(log) {
+      lgin = "로그아웃";
+      login = <Button><Link to="/login">{lgin}</Link></Button>;
+    } else {
+      lgin = "로그인";
+      login =  <Button><Link to="/login">{lgin}</Link></Button>;
+    }
+
+    let logState 
+
+    if(lgin ==="로그아웃") {
+      logState = <Button>마이페이지</Button>;
+    } else if (lgin === "로그인") {
+      logState = <Button><Link to="/signpage1">회원가입</Link></Button>;
+    }
     return (
       <header>
         <TopDiv>
           <Top>
             <LeftDiv />
-            <BtnDiv>{topMenu}</BtnDiv>
+            <BtnDiv>               
+              {logState}
+              {login}
+            </BtnDiv>
           </Top>
         </TopDiv>
         <MainNav>
           <NavDiv>
             <div>
-              <Logo>D</Logo>
-              <Title>대중장</Title>
+              <Link to="/">
+                <Logo>D</Logo>
+                <Title>대중장</Title>
+              </Link>
               {menuList}
             </div>
             <SearchDiv onClick={this.search.bind(this)} search={this.state.searchOpen} >

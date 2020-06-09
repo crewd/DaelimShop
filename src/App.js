@@ -7,12 +7,12 @@ import Notices from "./Notices";
 import QnA from "./QnA";
 import Login from "./Login";
 import SignPage1 from "./SignPage1";
-import SignPage2 from "./SignPage2";
-import SignPage3 from "./SignPage3";
+import SignPage2 from "./SignPage2"
 import Header from "./Header";
 import MobileHeader from "./MobileHeader";
 import Main from "./Main";
 import Product from "./Product"
+import Detail from "./Detail"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -73,6 +73,7 @@ const MobileScreen = styled.div`
 const Contents = styled.div`
   width: 100%;
   margin-top: 230px;
+  margin-bottom: 100px;
 `;
 
 class App extends Component {
@@ -81,9 +82,7 @@ class App extends Component {
     this.state = {
       menuContent: [
         { id: 1, list: "판매", link: "" },
-        { id: 2, list: "채팅", link: "" },
-        { id: 3, list: "알림", link: "" },
-        { id: 4, list: "고객센터", link: "" },
+        { id: 2, list: "쪽지", link: "" },
       ],
 
       topMenu: [
@@ -94,12 +93,10 @@ class App extends Component {
         { id: 0, list: "전체" },
         { id: 1, list: "의류" },
         { id: 2, list: "생활용품" },
-        { id: 3, list: "가구/인테리어" },
-        { id: 4, list: "디지털" },
-        { id: 5, list: "뷰티" },
-        { id: 6, list: "자동차/공구" },
-        { id: 7, list: "도서" },
-        { id: 8, list: "기타" },
+        { id: 3, list: "디지털" },
+        { id: 4, list: "뷰티" },
+        { id: 5, list: "도서" },
+        { id: 6, list: "기타" },
       ],
 
       info: {
@@ -109,73 +106,54 @@ class App extends Component {
         yaer: "3",
       },
 
-      login: true,
+      login: false,
 
-      product:[
-        { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털"},
-        { key: 1, name: "의류 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "의류"},
-        { key: 2, name: "가구 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "가구/인테리어"},
-        { key: 3, name: "뷰티 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "뷰티"},
-        { key: 4, name: "도서 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "도서"},
-        { key: 5, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타"},
-        { key: 6, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타"},
-        { key: 7, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타"},
-        { key: 8, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타"},
-        { key: 9, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타"},
+      product: [
+        { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
+        { key: 1, name: "의류 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "의류" },
+        { key: 2, name: "가구 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "가구/인테리어" },
+        { key: 3, name: "뷰티 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "뷰티" },
+        { key: 4, name: "도서 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "도서" },
+        { key: 5, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
+        { key: 6, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
+        { key: 7, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
+        { key: 8, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
+        { key: 9, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
       ]
     };
   }
-  
+
   render() {
     const loginState = this.state.login;
     let screen;
-    if (loginState) {
-      screen = (
-        <div>
-          <Route
-            path="/"
-            render={() => (
+   
+    return (
+      <Router>
+        <GlobalStyle />
+         <Route
+            path='/'
+            render={() =>
               <Header
                 category={this.state.category}
                 topMenu={this.state.topMenu}
                 menuContent={this.state.menuContent}
-              />
-            )}
-          />
-          <Contents>
-           <Main category={this.state.category} product={ this.state.product } />
-          </Contents>
-          <footer>
-            <Route path="/" component={Footer} />
-          </footer>
-        </div>
-      );
-    } else {
-      screen = (
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/signpage1" component={SignPage1} />
-          <Route path="/signPage2" component={SignPage2} />
-          <Route path="/signPage3" component={SignPage3} />
-
+                login={this.state.login}
+            />
+            } />
+        <Contents>
           <Route
-            path="/mobileheader"
-            render={() => (
-              <MobileHeader
-                category={this.state.category}
-                topMenu={this.state.topMenu}
-                menuContent={this.state.menuContent}
-                info={this.state.info}
-              />
-            )}
-          />
-        </Switch>
-      );
-    }
-    return (
-      <Router>
-        <GlobalStyle />
-        {screen}
+            exact path='/'
+            render={() =>
+              <Main category={this.state.category} product={this.state.product} />
+            } />
+            <Route path="/detail" component={Detail} />
+        </Contents>
+        <Route path="/login" component={Login} />
+        <Route path="/signpage1" component={SignPage1} />
+        <Route path="/signpage2" component={SignPage2} />
+        <footer>
+          <Route path="/" component={ Footer } />
+        </footer>
       </Router>
     );
   }
