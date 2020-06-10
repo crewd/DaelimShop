@@ -49,7 +49,6 @@ class Detail extends React.Component {
             <MessageBtn>쪽지 보내기</MessageBtn>
           </BtnDiv>
           </TextDiv>
-         
         </TopDiv>
       </Container>
     )

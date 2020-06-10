@@ -12,6 +12,8 @@ class Login extends React.Component {
 
   render() {
 
+    const loginOpen = this.props.loginOpen;
+
     const loginClick = () => {
       const userid = document.getElementById("userid");
       const password = document.getElementById("password");
@@ -30,6 +32,7 @@ class Login extends React.Component {
     return (
 
       <Container>
+        <Backgroud onClick={this.props.loginOpen} />
         <Div>
           <Img src="./일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
           <H4>대중장에 오신것을</H4>
@@ -42,13 +45,12 @@ class Login extends React.Component {
           </form>
 
           <Memberservice>
-            <Link to="#"><Memberfind>아이디 찾기</Memberfind></Link>
+            <Memberfind>아이디 찾기</Memberfind>
             <B>|</B>
-            <Link to="#"><Passwordfind>비밀번호 찾기</Passwordfind></Link>
+            <Passwordfind>비밀번호 찾기</Passwordfind>
             <B>|</B>
-            <Link to="SignPage1"><Join>회원가입</Join></Link>
+            <Join>회원가입</Join>
           </Memberservice>
-
         </Div>
       </Container>
 
@@ -58,16 +60,26 @@ class Login extends React.Component {
 
 
 const Container = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    width: 100%;  
+    height: 100%;
+    z-index: 500;
+  `
 
-    @media all and (min-width: 1024px) {
-      min-height: 900px;
-    }
-`
+  const Backgroud = styled.div `
+    width: 100%;  
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    left: 0;
+  `
 const Div = styled.div`
     width : 800px;
     height : 900px;
@@ -75,6 +87,7 @@ const Div = styled.div`
     background-color : white;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+    z-index: 550;
 
     @media all and (max-width: 1023px) {
         border-radius: 0;

@@ -267,10 +267,10 @@ class Header extends Component {
     let log = this.props.login
     if(log) {
       lgin = "로그아웃";
-      login = <Button><Link to="/login">{lgin}</Link></Button>;
+      login = <Button>{lgin}</Button>;
     } else {
       lgin = "로그인";
-      login =  <Button><Link to="/login">{lgin}</Link></Button>;
+      login =  <Button onClick={this.props.loginOpen}>{lgin}</Button>;
     }
 
     let logState 

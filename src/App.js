@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import Menu from "./Menu";
 import Footer from "./Footer";
+import Modal from "./Modal";
 import Notices from "./Notices";
 import QnA from "./QnA";
 import Login from "./Login";
@@ -24,6 +25,15 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
+    ${(props) => props.hidden && 
+    css`
+      overflow: hidden;
+    `}
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
   }
   
   div {
@@ -106,7 +116,7 @@ class App extends Component {
         yaer: "3",
       },
 
-      login: false,
+      login: true,
 
       product: [
         { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
@@ -119,41 +129,60 @@ class App extends Component {
         { key: 7, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
         { key: 8, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
         { key: 9, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
-      ]
+      ],
+
+      LoginOpen: false
     };
+  }
+
+  LoginOpen() {
+    this.setState({ LoginOpen: true });
+    if (this.state.LoginOpen === true) {
+      this.setState({ LoginOpen: false });
+    }
   }
 
   render() {
     const loginState = this.state.login;
     let screen;
-   
+    console.log(this.state.LoginOpen)
+
+    if(this.state.LoginOpen) {
+     screen = <GlobalStyle hidden />
+    } else {
+      screen = <GlobalStyle />
+    }
+
     return (
       <Router>
-        <GlobalStyle />
-         <Route
-            path='/'
-            render={() =>
-              <Header
-                category={this.state.category}
-                topMenu={this.state.topMenu}
-                menuContent={this.state.menuContent}
-                login={this.state.login}
+       {screen}
+        <Route
+          path='/'
+          render={() =>
+            <Header
+              category={this.state.category}
+              topMenu={this.state.topMenu}
+              menuContent={this.state.menuContent}
+              login={this.state.login}
+              loginOpen={this.LoginOpen.bind(this)}
             />
-            } />
+          } />
         <Contents>
           <Route
             exact path='/'
             render={() =>
               <Main category={this.state.category} product={this.state.product} />
             } />
-            <Route path="/detail" component={Detail} />
+          <Route path="/detail" component={Detail} />
         </Contents>
-        <Route path="/login" component={Login} />
         <Route path="/signpage1" component={SignPage1} />
         <Route path="/signpage2" component={SignPage2} />
         <footer>
-          <Route path="/" component={ Footer } />
+          <Route path="/" component={Footer} />
         </footer>
+        {this.state.LoginOpen === true && (
+          <Login loginOpen={this.LoginOpen.bind(this)} />
+        )}
       </Router>
     );
   }
