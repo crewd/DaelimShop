@@ -14,6 +14,9 @@ import MobileHeader from "./MobileHeader";
 import Main from "./Main";
 import Product from "./Product"
 import Detail from "./Detail"
+import Memfind from "./Memfind"
+import Pwdfind1 from "./Pwdfind1"
+import Pwdfind2 from "./Pwdfind2"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -25,15 +28,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
-    ${(props) => props.hidden && 
+    ${(props) => props.hidden &&
     css`
       overflow: hidden;
     `}
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    ::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-}
   }
   
   div {
@@ -116,7 +114,7 @@ class App extends Component {
         yaer: "3",
       },
 
-      login: true,
+      login: false,
 
       product: [
         { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
@@ -131,7 +129,12 @@ class App extends Component {
         { key: 9, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
       ],
 
-      LoginOpen: false
+      LoginOpen: false,
+      signpage1: false,
+      signpage2: false,
+      idFind: false,
+      pwdFind1: false,
+      pwdFind2: false
     };
   }
 
@@ -142,20 +145,79 @@ class App extends Component {
     }
   }
 
+  sign1_Open() {
+    this.setState({ signpage1: true });
+
+    if (this.state.signpage1 === true) {
+      this.setState({ signpage1: false });
+    }
+
+    if (this.state.LoginOpen === true) {
+      this.setState({ LoginOpen: false });
+      this.setState({ signpage1: true });
+    }
+  }
+
+  sign2_Open() {
+    this.setState({ signpage2: true });
+
+    if (this.state.signpage2 === true) {
+      this.setState({ signpage2: false });
+    }
+
+    if (this.state.signpage1 === true) {
+      this.setState({ signpage1: false });
+      this.setState({ signpage2: true });
+    }
+  }
+
+  idFind() {
+    this.setState({ idFind: true });
+    if (this.state.idFind === true) {
+      this.setState({ idFind: false });
+    }
+    if (this.state.LoginOpen === true) {
+      this.setState({ LoginOpen: false });
+      this.setState({ idFind: true });
+    }
+  }
+
+  pwdFind_1() {
+    this.setState({ pwdFind1: true });
+    if (this.state.pwdFind1 === true) {
+      this.setState({ pwdFind1: false });
+    }
+    if (this.state.LoginOpen === true) {
+      this.setState({ LoginOpen: false });
+      this.setState({ pwdFind1: true });
+    }
+  }
+
+  pwdFind_2() {
+    this.setState({ pwdFind2: true });
+    if (this.state.pwdFind2 === true) {
+      this.setState({ pwdFind2: false });
+    }
+    if (this.state.pwdFind1 === true) {
+      this.setState({ pwdFind1: false });
+      this.setState({ pwdFind2: true });
+    }
+  }
+
   render() {
     const loginState = this.state.login;
     let screen;
     console.log(this.state.LoginOpen)
 
-    if(this.state.LoginOpen) {
-     screen = <GlobalStyle hidden />
+    if (this.state.LoginOpen || this.state.signpage1 || this.state.signpage2 || this.state.idFind) {
+      screen = <GlobalStyle hidden />
     } else {
       screen = <GlobalStyle />
     }
 
     return (
       <Router>
-       {screen}
+        {screen}
         <Route
           path='/'
           render={() =>
@@ -181,8 +243,31 @@ class App extends Component {
           <Route path="/" component={Footer} />
         </footer>
         {this.state.LoginOpen === true && (
-          <Login loginOpen={this.LoginOpen.bind(this)} />
+          <Login
+            loginOpen={this.LoginOpen.bind(this)}
+            sign1_Open={this.sign1_Open.bind(this)}
+            idFind={this.idFind.bind(this)}
+            pwdFind1={this.pwdFind_1.bind(this)}
+          />
         )}
+
+        {this.state.signpage1 === true && (
+          <SignPage1 sign1_Open={this.sign1_Open.bind(this)} sign2_Open={this.sign2_Open.bind(this)} />
+        )}
+        {this.state.signpage2 === true && (
+          <SignPage2 sign2_Open={this.sign2_Open.bind(this)} />
+        )}
+        {this.state.idFind === true && (
+          <Memfind idFind={this.idFind.bind(this)} />
+        )}
+        {this.state.pwdFind1 === true && (
+          <Pwdfind1 pwdFind1={this.pwdFind_1.bind(this)} pwdFind2={this.pwdFind_2.bind(this)} />
+        )}
+
+        {this.state.pwdFind2 === true && (
+          <Pwdfind2 pwdFind2={this.pwdFind_2.bind(this)} />
+        )}
+
       </Router>
     );
   }

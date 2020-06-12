@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import close from "./icon/clear-24px.svg";
 
 
 class Login extends React.Component {
@@ -33,7 +34,9 @@ class Login extends React.Component {
 
       <Container>
         <Backgroud onClick={this.props.loginOpen} />
+
         <Div>
+          <Close onClick={this.props.loginOpen} ><img src="./icon/clear-24px.svg" alt="" /></Close>
           <Img src="./일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
           <H4>대중장에 오신것을</H4>
           <H1>환영합니다!</H1>
@@ -45,15 +48,14 @@ class Login extends React.Component {
           </form>
 
           <Memberservice>
-            <Memberfind>아이디 찾기</Memberfind>
+            <Memberfind onClick={this.props.idFind}>아이디 찾기</Memberfind>
             <B>|</B>
-            <Passwordfind>비밀번호 찾기</Passwordfind>
+            <Passwordfind onClick={this.props.pwdFind1}>비밀번호 찾기</Passwordfind>
             <B>|</B>
-            <Join>회원가입</Join>
+            <Join onClick={this.props.sign1_Open}>회원가입</Join>
           </Memberservice>
         </Div>
       </Container>
-
     );
   }
 }
@@ -72,7 +74,7 @@ const Container = styled.div`
     z-index: 500;
   `
 
-  const Backgroud = styled.div `
+const Backgroud = styled.div`
     width: 100%;  
     height: 100%;
     background: rgba(0, 0, 0, .3);
@@ -80,6 +82,17 @@ const Container = styled.div`
     top: 0;
     left: 0;
   `
+const Close = styled.div`
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 30px;
+  float: left;
+  >img {
+    width: 30px;
+    height: 30px;
+  }
+`
+
 const Div = styled.div`
     width : 800px;
     height : 900px;
@@ -88,6 +101,7 @@ const Div = styled.div`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
     z-index: 550;
+    padding: 20px;
 
     @media all and (max-width: 1023px) {
         border-radius: 0;
@@ -134,7 +148,7 @@ const Input = styled.input`
     height : 50px;
     font-size : 16px;
     margin-bottom : 10px;
-    padding-left : 5px;
+    padding: 5px 10px;
     border : 1px solid lightgrey;
     border-radius: 13px;
     outline:none;
@@ -146,7 +160,7 @@ const Input = styled.input`
 `
 
 const Loginbtn = styled.button`
-    width : 455px;
+    width : 472px;
     height : 60px;
     font-size : 20px;
     font-weight :Bold;
@@ -163,28 +177,33 @@ const Loginbtn = styled.button`
   cursor: pointer;
 `
 
-const Memberservice = styled.a`
+const Memberservice = styled.div`
     font-size : 16px;
     font-weight :Bold;
+    display: flex;
+    justify-content: center;
     @media all and (max-width: 425px) {
         font-size : 11px;
         
       }  
 
 `
-const Memberfind = styled.a`
+const Memberfind = styled.div`
+  cursor: pointer;
     color : lightgrey;
     &:hover {
         color : #0095C8;
       }
 `
-const Passwordfind = styled.a`
+const Passwordfind = styled.div`
+cursor: pointer;
     color : lightgrey;
     &:hover {
         color : #0095C8;
       }
 `
-const Join = styled.a`
+const Join = styled.div`
+cursor: pointer;
     color : lightgrey;
     &:hover {
         color : #0095C8;

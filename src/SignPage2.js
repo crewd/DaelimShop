@@ -1,12 +1,35 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import close from "./icon/clear-24px.svg";
+
+
+const Container = styled.div `
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;  
+  height: 100%;
+  z-index: 500;
+`
+
+const Backgroud = styled.div`
+    width: 100%;  
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    left: 0;
+  `
 
 const SignDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
   @media all and (min-width: 1024px) {
     min-height: 900px;
@@ -14,10 +37,13 @@ const SignDiv = styled.div`
 `;
 
 const SignBorder = styled.div`
-  width: 800px;
-  height: 900px;
+  width : 800px;
+  height : 900px;
+  background-color : white;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
+  z-index: 550;
+  padding: 20px;
 
   @media all and (max-width: 1023px) {
     border-radius: 0;
@@ -25,6 +51,17 @@ const SignBorder = styled.div`
     height: 100vh;
   }
 `;
+
+const Close = styled.div`
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 30px;
+  float: left;
+  >img {
+    width: 30px;
+    height: 30px;
+  }
+`
 
 const PagingDiv = styled.div`
   display: flex;
@@ -81,7 +118,7 @@ const Step = styled(Subtitle.withComponent("p"))`
   }
 `;
 
-const P = styled.p `
+const P = styled.p`
   font-size: 14px;
   margin-bottom: 36px;
 
@@ -144,7 +181,7 @@ const IdInput = styled.input.attrs({ type: "text" })`
   }
 `
 
-const SubmitBtn = styled.button `
+const SubmitBtn = styled.button`
   width: 132px;
   height: 50px;
   border-radius: 10px;
@@ -169,7 +206,7 @@ const SubmitBtn = styled.button `
   }
 `
 
-const PwdInput = styled.input.attrs({ type: "password" }) `
+const PwdInput = styled.input.attrs({ type: "password" })`
   width: 418px;
   height: 21px;
   padding: 15px;
@@ -215,7 +252,7 @@ const EmailInput = styled.input.attrs({ type: "text" })`
   }
 `
 
-const EmailDiv = styled.div `
+const EmailDiv = styled.div`
   width: 102px;
   font-size: 14px;
   display: inline-block;
@@ -235,7 +272,7 @@ const EmailDiv = styled.div `
   }
 `
 
-const PhoneCer = styled.button `
+const PhoneCer = styled.button`
   width: 450px;
   height: 50px;
   margin-top: 15px;
@@ -269,7 +306,7 @@ const NextBtn = styled.button`
   }
 `;
 
-class SignPage3 extends Component {
+class SignPage2 extends Component {
   render() {
     const Paging = [];
     var i = 0;
@@ -283,28 +320,32 @@ class SignPage3 extends Component {
     }
 
     return (
-      <SignDiv>
-        <SignBorder>
-          <PagingDiv>{Paging}</PagingDiv>
-          <Subtitle>회원가입을 진행해주세요.</Subtitle>
-          <Step>STEP 02</Step>
-          <P>*는 필수 정보이므로 꼭 입력해주셔야 합니다.</P>
-          <InputDiv>
-            <NameInput placeholder="*성명" />
-            <IdInput placeholder="*아이디" />
-            <SubmitBtn>아이디 중복 체크</SubmitBtn>
-            <PwdInput placeholder="*비밀번호" />
-            <PwdInput placeholder="*비밀번호 확인" />
-            <EmailInput placeholder="*대림대학교 이메일" /> 
-            <EmailDiv>@email.daelim </EmailDiv>
-            <SubmitBtn>이메일 인증 요청</SubmitBtn>
-            <PhoneCer>인증 요청</PhoneCer>
-          </InputDiv>
-          <NextBtn>가입 완료</NextBtn>
-        </SignBorder>
-      </SignDiv>
+      <Container>
+        <Backgroud onClick={this.props.sign2_Open} />
+        <SignDiv>
+          <SignBorder>
+          <Close onClick={this.props.sign2_Open} ><img src="./icon/clear-24px.svg" alt=""/></Close>
+            <PagingDiv>{Paging}</PagingDiv>
+            <Subtitle>회원가입을 진행해주세요.</Subtitle>
+            <Step>STEP 02</Step>
+            <P>*는 필수 정보이므로 꼭 입력해주셔야 합니다.</P>
+            <InputDiv>
+              <NameInput placeholder="*성명" />
+              <IdInput placeholder="*아이디" />
+              <SubmitBtn>아이디 중복 체크</SubmitBtn>
+              <PwdInput placeholder="*비밀번호" />
+              <PwdInput placeholder="*비밀번호 확인" />
+              <EmailInput placeholder="*대림대학교 이메일" />
+              <EmailDiv>@email.daelim </EmailDiv>
+              <SubmitBtn>이메일 인증 요청</SubmitBtn>
+              <PhoneCer>인증 요청</PhoneCer>
+            </InputDiv>
+            <NextBtn>가입 완료</NextBtn>
+          </SignBorder>
+        </SignDiv>
+      </Container>
     );
   }
 }
 
-export default SignPage3;
+export default SignPage2;
