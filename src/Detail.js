@@ -6,13 +6,13 @@ class Detail extends React.Component {
     super(props);
     this.state = {
       productDetail: { 
-        title: "title(제목)ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ",
-        price: "1,000(가격)",
+        title: "아기 옷 팝니다",
+        price: "40,000",
         productState: "중고(상품상태)",
         trade: "교환불가",
         delivery: "택배 착불",
         area: "서울",
-        img: "/image/bird-932704_640.jpg"
+        img: "/image/clothes.jpg"
       }
     }
   }
@@ -58,7 +58,7 @@ class Detail extends React.Component {
 const Container = styled.div `
   margin: 0 auto;
   width: 1200px;
-
+  padding: 50px 0;
 `
 const TopDiv = styled.div `
   width: 1200px;
@@ -67,7 +67,6 @@ const TopDiv = styled.div `
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   display: flex;
-  
 `
 
 const ImgDiv = styled.div`

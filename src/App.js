@@ -91,6 +91,8 @@ class App extends Component {
       menuContent: [
         { id: 1, list: "판매", link: "" },
         { id: 2, list: "쪽지", link: "" },
+        { id: 3, list: "공지사항", link: "" },
+        { id: 4, list: "QnA", link: "" }
       ],
 
       topMenu: [
@@ -117,11 +119,11 @@ class App extends Component {
       login: false,
 
       product: [
-        { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
-        { key: 1, name: "의류 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "의류" },
-        { key: 2, name: "가구 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "가구/인테리어" },
-        { key: 3, name: "뷰티 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "뷰티" },
-        { key: 4, name: "도서 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "도서" },
+        { key: 0, name: "디지털 상품", price: "10000", img: "/image/monitor.png", src: "", tab: "디지털"},
+        { key: 1, name: "의류 상품", price: "10000", img: "/image/clothes.jpg", src: "", tab: "의류"},
+        { key: 2, name: "가구 상품", price: "10000", img: "/image/furniture.png", src: "", tab: "가구/인테리어"},
+        { key: 3, name: "뷰티 상품", price: "10000", img: "/image/beauty.jpg", src: "", tab: "뷰티"},
+        { key: 4, name: "도서 상품", price: "10000", img: "/image/book.jpg", src: "", tab: "도서"},
         { key: 5, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
         { key: 6, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
         { key: 7, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
@@ -239,6 +241,7 @@ class App extends Component {
         </Contents>
         <Route path="/signpage1" component={SignPage1} />
         <Route path="/signpage2" component={SignPage2} />
+        <Route path="/notice" component={Notices} />
         <footer>
           <Route path="/" component={Footer} />
         </footer>
